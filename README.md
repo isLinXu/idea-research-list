@@ -1,9 +1,88 @@
+---
+AIGC:
+    Label: "1"
+    ContentProducer: 001191440300708461136T1XGW3
+    ProduceID: f9643191441a223536fc4b9e1bd9b715_8d373670b33111f1919d525400393706
+    ReservedCode1: LfO97Q2RErVhkNXCmndajEwJuwQ9mRJSoRnZghkn0Zm4KeUY5msNhDMdPmsSGEvL0wAw61mrmiFvSq94V44IxcpnAbn2r5eJHxLhIziDOGZfEYzelwlrn6zAgD2EFjU3eIQkVDy7ZjkTm+eq8Nwq6BMJTcvqnuj8etjFZZe6dbH098/HgavtdLjTOKU=
+    ContentPropagator: 001191440300708461136T1XGW3
+    PropagateID: f9643191441a223536fc4b9e1bd9b715_8d373670b33111f1919d525400393706
+    ReservedCode2: LfO97Q2RErVhkNXCmndajEwJuwQ9mRJSoRnZghkn0Zm4KeUY5msNhDMdPmsSGEvL0wAw61mrmiFvSq94V44IxcpnAbn2r5eJHxLhIziDOGZfEYzelwlrn6zAgD2EFjU3eIQkVDy7ZjkTm+eq8Nwq6BMJTcvqnuj8etjFZZe6dbH098/HgavtdLjTOKU=
+---
+
 # IDEA-Research 全部工作与论文调研报告（终版 · 完整深度版）
 
 > 调研日期：2026-08-26（2026-09-08 复核更新）
 > 数据来源：GitHub 组织官方仓库清单（49 个，via GitHub API，含 license/topics/时间戳）+ 各仓库 README + arXiv 编号核验 + 网络权威资料交叉验证
 > 组织：粤港澳大湾区数字经济研究院（International Digital Economy Academy, IDEA）· 计算机视觉与机器人研究中心（IDEA CVR）
 > 负责人：张磊（Lei Zhang），前微软研究院首席研究员，IEEE Fellow
+
+---
+
+## 文档导览（建议先读这一节）
+
+> 本节说明这份报告**是什么、怎么读、数据从哪来**，便于用最少时间定位所需信息。
+
+### 0.1 这份报告是什么
+
+一份面向 IDEA-Research（粤港澳大湾区数字经济研究院 · 计算机视觉与机器人研究中心官方开源组织）的**组织级全景调研报告**：覆盖其**全部 49 个公开仓库、全部代表性论文（2022—2026）、七大技术主线、团队与商业化全貌**，并对核心工作做了技术拆解、量化对比与生态定位分析。
+
+- **调研对象**：IDEA-Research 组织的全部开源工作与对应论文
+- **数据口径**：GitHub API 实测（仓库清单 / License / Topics / Star / 时间戳）+ 各仓库 README + arXiv 编号核验 + 网络权威资料交叉验证
+- **数据时点**：调研 2026-08-26，复核更新 2026-09-08
+- **内容规模**：19 个正文章节 + 49 行论文图鉴 + 49 行仓库量化明细
+
+### 0.2 十秒速览
+
+| 维度 | 关键数据 |
+|---|---|
+| 公开仓库 | 49 个（无归档、无遗漏） |
+| Star 总量 | 58,641（GitHub API 实测） |
+| 技术主线 | 7 条（DETR 检测基础 → 开放世界感知 → 统一视觉大模型） |
+| 论文会议分布 | ICLR / CVPR / ICCV / ECCV / NeurIPS / ICML / AAAI |
+| 时间跨度 | 2022—2026 |
+| 组织名片 | Grounding DINO（ECCV 2024 最具影响力论文）、Grounded-Segment-Anything（17.7k★，组织内最高） |
+
+### 0.3 按需求找章节（阅读路径）
+
+| 你想了解 | 直接跳到 |
+|---|---|
+| 这个组织是干什么的、实力如何 | 〇、执行摘要 → 〇·1 影响力数据大盘 |
+| 每篇论文长什么样（带缩略图） | **十二、论文图鉴（49 仓库论文 · 缩略图速查表）** |
+| 有哪些仓库、各多少 Star / 用什么语言 | 〇·5 仓库量化明细速查表 |
+| 某条技术线怎么演进的（技术深挖） | 三 ~ 九、七大主线深度拆解 |
+| 某仓库怎么装、依赖什么、用什么许可证 | 十、仓库工程细节速查表 |
+| 最新工作（2025—2026）有哪些 | 〇·4 最新工作官方状态、十一·3、主线 E/F/G |
+| 数据集与训练基础设施 | 十七、数据集与训练基础设施 |
+| 与同领域工作（竞品）的差异 | 十六、横向对比分析 |
+| 团队、人才、商业化 | 一、组织与团队全貌、十九、学术谱系与人才培养 |
+| 开源生态与下游影响力 | 十八、开源生态与社区影响力 |
+
+### 0.4 文档结构地图
+
+| 部分 | 章节 | 内容要点 |
+|---|---|---|
+| **速览层** | 〇、执行摘要；〇·1 ~ 〇·7 | 四大里程碑、影响力大盘、引用量快照、数据集生态、最新工作状态、仓库量化明细、下游集成清单、核心成员导航 |
+| **背景层** | 一 ~ 二 | 机构背景与团队分工、研究里程碑时间线、商业化（视启未来）、七大技术版图总览 |
+| **技术层** | 三 ~ 九 | 七大主线逐仓库深度拆解：论文、核心设计、关键实验指标 |
+| **工程层** | 十 | 许可证分布、依赖框架、安装方式、权重获取、典型应用 |
+| **索引层** | 十一 ~ 十三 | 全量论文清单（含无仓库论文）、**论文图鉴（带缩略图）**、代表性论文时间线 |
+| **评估层** | 十四 ~ 十九 | 影响力评估、趋势研判、核心技术深度解析、横向对比、数据集与训练基础设施、开源生态、学术谱系 |
+
+### 0.5 数据口径与符号约定
+
+| 约定 | 含义 |
+|---|---|
+| ★ / Star | GitHub Star 数，GitHub API 实测，时点为 2026-09-08 |
+| —— / — | 该项不适用或无公开信息（如部分仓库无 arXiv 编号） |
+| 引用量（约） | Google Scholar / Semantic Scholar 采集的近似值 |
+| 缩略图 | 论文原图或仓库 README 首图；个别工具类仓库回退为 GitHub 仓库卡片，详见第十二章图源说明 |
+| 「实测」 | 指通过 GitHub API 或脚本逐一验证获得，而非引用第三方口径 |
+
+### 0.6 如何更新这份报告
+
+1. 仓库清单、Star、License 等量化字段：重跑 GitHub API 抓取脚本，替换〇·5 与第十章对应表格；
+2. 新增仓库 / 论文：补充至主线章节（三~九）、第十章工程细节与第十二章图鉴；
+3. 图鉴缩略图：优先取仓库新增 README 首图，无图则取 arXiv 论文页首图，最后回退仓库卡片。
 
 ---
 
@@ -461,7 +540,7 @@ Grounding DINO(文本开集检测) ──► Grounding DINO 1.5(更强backbone+�
 
 ## 十一、全量论文清单（含 GitHub 仓库之外的论文）
 
-> 仓库对应论文见「十二、论文速查表」；本表补充**未纳入 IDEA-Research 仓库**的高影响力论文（多为张磊微软研究院时期及跨机构合作代表作，作者含张磊/团队核心成员），引用量为 Google Scholar / Semantic Scholar 采集的近似值。
+> 仓库对应论文见「十二、论文图鉴（带缩略图）」；本表补充**未纳入 IDEA-Research 仓库**的高影响力论文（多为张磊微软研究院时期及跨机构合作代表作，作者含张磊/团队核心成员），引用量为 Google Scholar / Semantic Scholar 采集的近似值。**本章论文均无 IDEA-Research 开源仓库（亦无对应仓库配图），故不纳入第十二章图鉴表；图鉴表仅覆盖有开源仓库 / 有论文配图的工作。**
 
 ### 11.1 微软研究院时期奠基性 / 高引论文（无组织仓库）
 
@@ -507,59 +586,68 @@ Grounding DINO(文本开集检测) ──► Grounding DINO 1.5(更强backbone+�
 
 ---
 
-## 十二、论文速查表（49 仓库 ↔ 论文 ↔ 会议 ↔ arXiv 全量对照）
+## 十二、论文图鉴（49 仓库论文 · 缩略图速查表）
 
-| # | 仓库 | 论文 | 会议/年份 | arXiv |
-|---|---|---|---|---|
-| 1 | [DAB-DETR](https://github.com/IDEA-Research/DAB-DETR) | Dynamic Anchor Boxes are Better Queries for DETR | ICLR 2022 | [2201.12329](https://arxiv.org/abs/2201.12329) |
-| 2 | [DN-DETR](https://github.com/IDEA-Research/DN-DETR) | Accelerate DETR Training by Introducing Query DeNoising | CVPR 2022 Oral | [2203.01305](https://arxiv.org/abs/2203.01305) |
-| 3 | [DINO](https://github.com/IDEA-Research/DINO) | DETR with Improved DeNoising Anchor Boxes | ICLR 2023 | [2203.03605](https://arxiv.org/abs/2203.03605) |
-| 4 | [Stable-DINO](https://github.com/IDEA-Research/Stable-DINO) | Detection Transformer with Stable Matching | ICCV 2023 | [2304.04742](https://arxiv.org/abs/2304.04742) |
-| 5 | [Lite-DETR](https://github.com/IDEA-Research/Lite-DETR) | An Interleaved Multi-Scale Encoder for Efficient DETR | CVPR 2023 | [2303.07335](https://arxiv.org/abs/2303.07335) |
-| 6 | [MaskDINO](https://github.com/IDEA-Research/MaskDINO) | Unified Transformer-based Framework for Detection and Segmentation | CVPR 2023 | [2206.02777](https://arxiv.org/abs/2206.02777) |
-| 7 | [MP-Former](https://github.com/IDEA-Research/MP-Former) | Mask-Piloted Transformer for Image Segmentation | CVPR 2023 | [2303.07336](https://arxiv.org/abs/2303.07336) |
-| 8 | [ED-Pose](https://github.com/IDEA-Research/ED-Pose) | Explicit Box Detection Unifies End-to-End Multi-Person Pose Estimation | ICLR 2023 | [2302.01593](https://arxiv.org/abs/2302.01593) |
-| 9 | [DQ-DETR](https://github.com/IDEA-Research/DQ-DETR) | Dual Query Detection Transformer for Phrase Extraction and Grounding | AAAI 2023 | [2211.15516](https://arxiv.org/abs/2211.15516) |
-| 10 | [3D-deformable-attention](https://github.com/IDEA-Research/3D-deformable-attention) | DFA3D: 3D Deformable Attention For 2D-to-3D Feature Lifting | ICCV 2023 | [2307.12972](https://arxiv.org/abs/2307.12972) |
-| 11 | [DisCo-CLIP](https://github.com/IDEA-Research/DisCo-CLIP) | Distributed Contrastive Loss for Memory Efficient CLIP Training | — | [2304.08480](https://arxiv.org/abs/2304.08480) |
-| 12 | [detrex](https://github.com/IDEA-Research/detrex) | [detrex](https://github.com/IDEA-Research/detrex): Benchmarking and Improving Transferability of Pretrained ViTs on Detection | 研究平台 | [2306.07265](https://arxiv.org/abs/2306.07265) |
-| 13 | [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO) | Marrying [DINO](https://github.com/IDEA-Research/DINO) with Grounded Pre-Training for Open-Set Object Detection | ECCV 2024 | [2303.05499](https://arxiv.org/abs/2303.05499) |
-| 14 | [Grounding-DINO-1.5-API](https://github.com/IDEA-Research/Grounding-DINO-1.5-API) | Advance the Edge of Open-Set Object Detection | 技术报告 | [2405.10300](https://arxiv.org/abs/2405.10300) |
-| 15 | [T-Rex](https://github.com/IDEA-Research/T-Rex) | T-Rex2: Towards Generic Object Detection via Text-Visual Prompt Synergy | ECCV 2024 | [2403.14610](https://arxiv.org/abs/2403.14610) |
-| 16 | [DINO-X-API](https://github.com/IDEA-Research/DINO-X-API) | DINO-X: A Unified Vision Model for Open-World Detection and Understanding | — | [2411.14347](https://arxiv.org/abs/2411.14347) |
-| 17 | [Rex-Omni](https://github.com/IDEA-Research/Rex-Omni) | Detect Anything via Next Point Prediction | CVPR 2026 | [项目页](https://rex-omni.github.io/) |
-| 18 | [RexSeek](https://github.com/IDEA-Research/RexSeek) | Referring any person or objects given a natural language description | ICCV 2025 | [2503.08507](https://arxiv.org/abs/2503.08507) |
-| 19 | [Rex-Thinker](https://github.com/IDEA-Research/Rex-Thinker) | Grounded Object Referring via Chain-of-Thought Reasoning | ICLR 2026 | [2506.04034](https://arxiv.org/abs/2506.04034) |
-| 20 | [ChatRex](https://github.com/IDEA-Research/ChatRex) | Taming Multimodal LLM for Joint Perception and Understanding | — | [2411.18363](https://arxiv.org/abs/2411.18363) |
-| 21 | [OpenSeeD](https://github.com/IDEA-Research/OpenSeeD) | A Simple Framework for Open-Vocabulary Segmentation and Detection | ICCV 2023 | [2303.08131](https://arxiv.org/abs/2303.08131) |
-| 22 | [TAPTR](https://github.com/IDEA-Research/TAPTR) | Tracking Any Point with Transformers as Detection | ECCV 2024 | [2403.13042](https://arxiv.org/abs/2403.13042) |
-| 23 | [TAPTR](https://github.com/IDEA-Research/TAPTR) | TAPTRv2: Effective Point Tracking with Attention to Occlusion | NeurIPS 2024 | [2407.16291](https://arxiv.org/abs/2407.16291) |
-| 24 | [TAPTR](https://github.com/IDEA-Research/TAPTR) | TAPTRv3 | ICLR 2026 | [2411.18671](https://arxiv.org/abs/2411.18671) |
-| 25 | [Grounded-Segment-Anything](https://github.com/IDEA-Research/Grounded-Segment-Anything) | Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks | — | [2401.14159](https://arxiv.org/abs/2401.14159) |
-| 26 | [OSX](https://github.com/IDEA-Research/OSX) | One-Stage 3D Whole-Body Mesh Recovery with Component Aware Transformer | CVPR 2023 | [2303.16160](https://arxiv.org/abs/2303.16160) |
-| 27 | [DWPose](https://github.com/IDEA-Research/DWPose) | Effective Whole-body Pose Estimation with Two-stages Distillation | ICCV 2023 | [2307.15880](https://arxiv.org/abs/2307.15880) |
-| 28 | [X-Pose](https://github.com/IDEA-Research/X-Pose) | [X-Pose](https://github.com/IDEA-Research/X-Pose): Detecting Any Keypoints | ECCV 2024 | [2310.08530](https://arxiv.org/abs/2310.08530) |
-| 29 | [Click-Pose](https://github.com/IDEA-Research/Click-Pose) | Neural Interactive Keypoint Detection | ICCV 2023 | [2308.10174](https://arxiv.org/abs/2308.10174) |
-| 30 | [HumanArt](https://github.com/IDEA-Research/HumanArt) | Human-Art: A Versatile Human-Centric Dataset | CVPR 2023 | [2303.02760](https://arxiv.org/abs/2303.02760) |
-| 31 | [HumanSD](https://github.com/IDEA-Research/HumanSD) | Native Skeleton-Guided Diffusion Model for Human Image Generation | ICCV 2023 | [2304.04269](https://arxiv.org/abs/2304.04269) |
-| 32 | [HandOSweb](https://github.com/IDEA-Research/HandOSweb) | HandOS: 3D Hand Reconstruction in One Stage | — | [2412.01537](https://arxiv.org/abs/2412.01537) |
-| 33 | [DiffHOI](https://github.com/IDEA-Research/DiffHOI) | Boosting Human-Object Interaction Detection with Text-to-Image Diffusion Model | — | [2305.12252](https://arxiv.org/abs/2305.12252) |
-| 34 | [DreamWaltz](https://github.com/IDEA-Research/DreamWaltz) | Make a Scene with Complex 3D Animatable Avatars | NeurIPS 2023 | [2305.12529](https://arxiv.org/abs/2305.12529) |
-| 35 | [TOSS](https://github.com/IDEA-Research/TOSS) | High-quality text-guided novel view synthesis from a single image | ICLR 2024 | [2310.10644](https://arxiv.org/abs/2310.10644) |
-| 36 | [SceneMaker](https://github.com/IDEA-Research/SceneMaker) | Open-set 3D Scene Generation with Decoupled De-occlusion and Pose Estimation | CVPR 2026 | [2512.10957](https://arxiv.org/abs/2512.10957) |
-| 37 | [SegVGGT](https://github.com/IDEA-Research/SegVGGT) | Joint 3D Reconstruction and Instance Segmentation from Multi-View Images | ECCV 2026 | [2603.19926](https://arxiv.org/abs/2603.19926) |
-| 38 | [SegDINO3D](https://github.com/IDEA-Research/SegDINO3D) | 3D Instance Segmentation Empowered by Image-Level and Object-Level 2D Features | AAAI 2026 | [未见官方 arXiv，见仓库](<https://github.com/IDEA-Research/SegDINO3D>) |
-| 39 | [V-Reflection](https://github.com/IDEA-Research/V-Reflection) | Transforming MLLMs from Passive Observers to Active Interrogators | — | [2604.03307](https://arxiv.org/abs/2604.03307) |
-| 40 | [Motion-X](https://github.com/IDEA-Research/Motion-X) | A Large-scale 3D Expressive Whole-body Human Motion Dataset | NeurIPS 2023 | [项目页](https://motion-x-dataset.github.io/) |
-| 41 | [HumanTOMATO](https://github.com/IDEA-Research/HumanTOMATO) | Text-aligned Whole-body Motion Generation | ICML 2024 | [2310.12978](https://arxiv.org/abs/2310.12978) |
-| 42 | [MotionLLM](https://github.com/IDEA-Research/MotionLLM) | Understanding Human Behaviors from Human Motions and Videos | — | [2405.20340](https://arxiv.org/abs/2405.20340) |
-| 43 | [MotionCLR](https://github.com/IDEA-Research/MotionCLR) | Motion Generation and Training-free Editing via Understanding Attention Mechanisms | — | [2410.18977](https://arxiv.org/abs/2410.18977) |
-| 44 | [Grounded-SAM-2](https://github.com/IDEA-Research/Grounded-SAM-2) | Ground and Track Anything in Videos（应用仓库）| — | [2401.14159](https://arxiv.org/abs/2401.14159) |
-| 45 | [deepdataspace](https://github.com/IDEA-Research/deepdataspace) | CV 数据可视化/标注/模型分析工具（非论文）| — | [官网](https://deepdataspace.com) |
-| 46 | [hana](https://github.com/IDEA-Research/hana) | Imagen 第三方实现（非论文）| — | — |
-| 47 | [IYFC](https://github.com/IDEA-Research/IYFC) | IDEA 内部 GPU 基础设施（非论文）| — | — |
-| 48 | [LipsFormer](https://github.com/IDEA-Research/LipsFormer) | Introducing Lipschitz Continuity to Vision Transformers | — | — |
-| 49 | [detrex-storage](https://github.com/IDEA-Research/detrex-storage) / [awesome-detection-transformer](https://github.com/IDEA-Research/awesome-detection-transformer) | 权重仓库 / 论文列表 | — | — |
+> 本表是本报告**唯一带图的论文索引**：一行 = 一篇代表性论文（或一个代表性仓库工作），左起为论文原图缩略图，右侧为仓库、会议与论文链接及一句话方法要点。
+>
+> **图源说明**（共 49 张，全部为可直链的稳定图源，已逐一实测可访问）：
+> - **论文原图（约 94%）**：取自各仓库 README 的 teaser / 框架图，或 arXiv 论文页首图（如 MP-Former、TAPTRv2/v3、HandOS、DiffHOI、MotionCLR）—— 均为论文代表性配图；
+> - **GitHub 仓库卡片（3 张）**：IYFC、LipsFormer、detrex-storage 等仓库 README 本身不含插图（后两者为工具/权重类仓库），故回退为 GitHub 自动生成的仓库预览卡；
+> - 点击缩略图可查看原图；图片较大时浏览器会按 220px 宽度缩放显示。
+>
+> 说明：仓库与论文并非一一对应（TAPTR 一个仓库对应三篇论文、detrex-storage 与 awesome-detection-transformer 合并为一行），故本表按「代表性论文」维度组织，共 49 行。
+
+| # | 缩略图 | 论文 / 仓库 / 会议 / 链接 | 方法要点 |
+|:--:|:--:|---|---|
+| 1 | <img src="https://raw.githubusercontent.com/IDEA-Research/DAB-DETR/HEAD/figure/arch_new2.png" width="220" alt="DAB-DETR 缩略图"> | **Dynamic Anchor Boxes are Better Queries for DETR**<br>仓库：[DAB-DETR](https://github.com/IDEA-Research/DAB-DETR)<br>会议：ICLR 2022 · 论文：[arXiv:2201.12329](https://arxiv.org/abs/2201.12329) | 把 decoder query 显式化为 4D 动态锚框 (x,y,w,h)，让 query 具备物理可解释性，收敛从百余 epoch 降至 12 epoch |
+| 2 | <img src="https://raw.githubusercontent.com/IDEA-Research/DN-DETR/HEAD/.github/architect.png" width="220" alt="DN-DETR 缩略图"> | **Accelerate DETR Training by Introducing Query DeNoising**<br>仓库：[DN-DETR](https://github.com/IDEA-Research/DN-DETR)<br>会议：CVPR 2022 Oral · 论文：[arXiv:2203.01305](https://arxiv.org/abs/2203.01305) | 向 decoder 注入加噪 GT query 并配 attention mask 隔离，让网络学会去噪，彻底稳定二分匹配 |
+| 3 | <img src="https://raw.githubusercontent.com/IDEA-Research/DINO/HEAD/figs/framework.png" width="220" alt="DINO 缩略图"> | **DETR with Improved DeNoising Anchor Boxes**<br>仓库：[DINO](https://github.com/IDEA-Research/DINO)<br>会议：ICLR 2023 · 论文：[arXiv:2203.03605](https://arxiv.org/abs/2203.03605) | 集 DAB+DN 大成：对比去噪 (CDN)、混合匹配、look-forward-twice；R50 12ep 达 50.9 AP，登顶 COCO 并霸榜 5 个月 |
+| 4 | <img src="https://raw.githubusercontent.com/IDEA-Research/Stable-DINO/HEAD/assets/performance.png" width="220" alt="Stable-DINO 缩略图"> | **Detection Transformer with Stable Matching**<br>仓库：[Stable-DINO](https://github.com/IDEA-Research/Stable-DINO)<br>会议：ICCV 2023 · 论文：[arXiv:2304.04742](https://arxiv.org/abs/2304.04742) | 从标签噪声视角剖析匹配不稳定，提出稳定匹配策略，提升 DINO 训练稳定性与最终精度 |
+| 5 | <img src="https://raw.githubusercontent.com/IDEA-Research/Lite-DETR/HEAD/figs/framework.jpg" width="220" alt="Lite-DETR 缩略图"> | **An Interleaved Multi-Scale Encoder for Efficient DETR**<br>仓库：[Lite-DETR](https://github.com/IDEA-Research/Lite-DETR)<br>会议：CVPR 2023 · 论文：[arXiv:2303.07335](https://arxiv.org/abs/2303.07335) | 交错多尺度编码器：各层仅处理部分尺度 token，FLOPs 约降 60%，面向端侧与实时场景 |
+| 6 | <img src="https://raw.githubusercontent.com/IDEA-Research/MaskDINO/HEAD/figures/framework.jpg" width="220" alt="MaskDINO 缩略图"> | **Mask DINO: Unified Transformer Framework for Detection and Segmentation**<br>仓库：[MaskDINO](https://github.com/IDEA-Research/MaskDINO)<br>会议：CVPR 2023 · 论文：[arXiv:2206.02777](https://arxiv.org/abs/2206.02777) | 掩码作为通用 query，一套 Transformer 统一检测与分割（Swin-L 上 bbox 57.8 AP / segm 51.2 AP） |
+| 7 | <img src="https://arxiv.org/html/2303.07336v1/arch.png" width="220" alt="MP-Former 缩略图"> | **Mask-Piloted Transformer for Image Segmentation**<br>仓库：[MP-Former](https://github.com/IDEA-Research/MP-Former)<br>会议：CVPR 2023 · 论文：[arXiv:2303.07336](https://arxiv.org/abs/2303.07336) | 掩码引导（mask-piloted）训练范式，抑制分割掩码中的假阳性与假阴性 |
+| 8 | <img src="https://raw.githubusercontent.com/IDEA-Research/ED-Pose/HEAD/figs/edpose_git.jpg" width="220" alt="ED-Pose 缩略图"> | **Explicit Box Detection Unifies End-to-End Multi-Person Pose Estimation**<br>仓库：[ED-Pose](https://github.com/IDEA-Research/ED-Pose)<br>会议：ICLR 2023 · 论文：[arXiv:2302.01593](https://arxiv.org/abs/2302.01593) | 显式框检测 + 关键点回归，首个端到端多人姿态估计统一框架 |
+| 9 | <img src="https://raw.githubusercontent.com/IDEA-Research/DQ-DETR/HEAD/.asset/tasks_comparison.png" width="220" alt="DQ-DETR 缩略图"> | **Dual Query Detection Transformer for Phrase Extraction and Grounding**<br>仓库：[DQ-DETR](https://github.com/IDEA-Research/DQ-DETR)<br>会议：AAAI 2023 · 论文：[arXiv:2211.15516](https://arxiv.org/abs/2211.15516) | 双查询设计分别负责短语抽取与指代定位，并提出跨模态 AP 新指标 |
+| 10 | <img src="https://raw.githubusercontent.com/IDEA-Research/3D-deformable-attention/HEAD/figures/Comparisons.png" width="220" alt="DFA3D 缩略图"> | **DFA3D: 3D Deformable Attention For 2D-to-3D Feature Lifting**<br>仓库：[DFA3D](https://github.com/IDEA-Research/3D-deformable-attention)<br>会议：ICCV 2023 · 论文：[arXiv:2307.12972](https://arxiv.org/abs/2307.12972) | 在可变形注意力中引入 3D 空间索引，高效完成 2D→3D 特征提升，服务 BEV / 3D 检测 |
+| 11 | <img src="https://raw.githubusercontent.com/IDEA-Research/DisCo-CLIP/HEAD/DisCo-CLIP.png" width="220" alt="DisCo-CLIP 缩略图"> | **Distributed Contrastive Loss for Memory Efficient CLIP Training**<br>仓库：[DisCo-CLIP](https://github.com/IDEA-Research/DisCo-CLIP)<br>会议：— · 论文：[arXiv:2304.08480](https://arxiv.org/abs/2304.08480) | 分布式对比损失：把 CLIP 大 batch 对比损失拆分到多卡，显著降低单卡显存压力 |
+| 12 | <img src="https://raw.githubusercontent.com/IDEA-Research/detrex/HEAD/assets/detr_arch.png" width="220" alt="detrex 缩略图"> | **detrex: Benchmarking and Improving Transferability of Pretrained ViTs on Detection**<br>仓库：[detrex](https://github.com/IDEA-Research/detrex)<br>会议：研究平台 · 论文：[arXiv:2306.07265](https://arxiv.org/abs/2306.07265) | DETR 系统一研究平台：内置 DINO / DN-DETR / DAB-DETR / MaskDINO 等全系实现，支持检测/分割/姿态 |
+| 13 | <img src="https://raw.githubusercontent.com/IDEA-Research/GroundingDINO/HEAD/.asset/arch.png" width="220" alt="Grounding DINO 缩略图"> | **Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection**<br>仓库：[Grounding DINO](https://github.com/IDEA-Research/GroundingDINO)<br>会议：ECCV 2024 · 论文：[arXiv:2303.05499](https://arxiv.org/abs/2303.05499) | DINO + BERT 双编码器经 feature enhancer 融合，语言引导 query 选择；零样本 COCO 46.6~52.5 AP，被评 ECCV 2024 最具影响力论文 |
+| 14 | <img src="https://raw.githubusercontent.com/IDEA-Research/Grounding-DINO-1.5-API/HEAD/asset/gd1.5_overall_framework.png" width="220" alt="Grounding DINO 1.5 缩略图"> | **Grounding DINO 1.5: Advance the Edge of Open-Set Object Detection**<br>仓库：[Grounding DINO 1.5](https://github.com/IDEA-Research/Grounding-DINO-1.5-API)<br>会议：技术报告 · 论文：[arXiv:2405.10300](https://arxiv.org/abs/2405.10300) | ViT-2B 级 backbone + 20M 训练图像，Pro 版 COCO 约 59.9 AP / LVIS 约 67.3，Edge 版兼顾端侧 |
+| 15 | <img src="https://raw.githubusercontent.com/IDEA-Research/T-Rex/HEAD/assets/trex2/video_cover.jpg" width="220" alt="T-Rex2 缩略图"> | **T-Rex2: Towards Generic Object Detection via Text-Visual Prompt Synergy**<br>仓库：[T-Rex2](https://github.com/IDEA-Research/T-Rex)<br>会议：ECCV 2024 · 论文：[arXiv:2403.14610](https://arxiv.org/abs/2403.14610) | 首次在同一模型内融合文本提示与视觉提示，框选示例即可零样本检测任意类别（LVIS 约 42.2 AP） |
+| 16 | <img src="https://raw.githubusercontent.com/IDEA-Research/DINO-X-API/HEAD/assets/demo.png" width="220" alt="DINO-X 缩略图"> | **DINO-X: A Unified Vision Model for Open-World Object Detection and Understanding**<br>仓库：[DINO-X](https://github.com/IDEA-Research/DINO-X-API)<br>会议：— · 论文：[arXiv:2411.14347](https://arxiv.org/abs/2411.14347) | object-centric 统一视觉模型：文本/视觉/自定义三类提示，检测、分割、姿态、OCR、区域描述一体，基于 Grounding-100M 训练 |
+| 17 | <img src="https://raw.githubusercontent.com/IDEA-Research/Rex-Omni/HEAD/assets/teaser.png" width="220" alt="Rex-Omni 缩略图"> | **Detect Anything via Next Point Prediction**<br>仓库：[Rex-Omni](https://github.com/IDEA-Research/Rex-Omni)<br>会议：CVPR 2026 · 论文：[项目页](https://rex-omni.github.io/) | 「下一关键点预测」统一范式：检测框、OCR、指代 pointing、关键点全部重写为序列预测，3B 模型 + GRPO 强化学习 |
+| 18 | <img src="https://raw.githubusercontent.com/IDEA-Research/RexSeek/HEAD/assets/video_teaser.jpg" width="220" alt="RexSeek 缩略图"> | **RexSeek: Referring any person or objects given a natural language description**<br>仓库：[RexSeek](https://github.com/IDEA-Research/RexSeek)<br>会议：ICCV 2025 · 论文：[arXiv:2503.08507](https://arxiv.org/abs/2503.08507) | 依据自然语言描述指代任意人物/物体，覆盖遮挡与模糊难例，并发布 HumanRef 基准 |
+| 19 | <img src="https://raw.githubusercontent.com/IDEA-Research/Rex-Thinker/HEAD/assets/teaser_example.jpg" width="220" alt="Rex-Thinker 缩略图"> | **Grounded Object Referring via Chain-of-Thought Reasoning**<br>仓库：[Rex-Thinker](https://github.com/IDEA-Research/Rex-Thinker)<br>会议：ICLR 2026 · 论文：[arXiv:2506.04034](https://arxiv.org/abs/2506.04034) | 把链式思考 (CoT) 与 GRPO 强化学习引入接地指代定位，提升可解释性与推理鲁棒性 |
+| 20 | <img src="https://raw.githubusercontent.com/IDEA-Research/ChatRex/HEAD/assets/teaser_cover.jpg" width="220" alt="ChatRex 缩略图"> | **ChatRex: Taming Multimodal LLM for Joint Perception and Understanding**<br>仓库：[ChatRex](https://github.com/IDEA-Research/ChatRex)<br>会议：— · 论文：[arXiv:2411.18363](https://arxiv.org/abs/2411.18363) | 感知-理解解耦：区域 token 与文本 token 双 tokenizer 分离训练，避免感知与对话互相干扰 |
+| 21 | <img src="https://raw.githubusercontent.com/IDEA-Research/OpenSeeD/HEAD/figs/intro.jpg" width="220" alt="OpenSeeD 缩略图"> | **A Simple Framework for Open-Vocabulary Segmentation and Detection**<br>仓库：[OpenSeeD](https://github.com/IDEA-Research/OpenSeeD)<br>会议：ICCV 2023 · 论文：[arXiv:2303.08131](https://arxiv.org/abs/2303.08131) | 首个统一开放词汇分割与检测的简单框架，文本-像素与文本-框对齐双任务联合训练 |
+| 22 | <img src="https://raw.githubusercontent.com/IDEA-Research/TAPTR/HEAD/assets/TAPTRv1.png" width="220" alt="TAPTR v1 缩略图"> | **Tracking Any Point with Transformers as Detection**<br>仓库：[TAPTR v1](https://github.com/IDEA-Research/TAPTR)<br>会议：ECCV 2024 · 论文：[arXiv:2403.13042](https://arxiv.org/abs/2403.13042) | 把视频任意点跟踪重构为类 DETR 的集合预测，以 query 形式预测任意点轨迹 |
+| 23 | <img src="https://arxiv.org/html/2407.16291v1/arch_v3.png" width="220" alt="TAPTR v2 缩略图"> | **TAPTRv2: Effective Point Tracking with Attention to Occlusion**<br>仓库：[TAPTR v2](https://github.com/IDEA-Research/TAPTR)<br>会议：NeurIPS 2024 · 论文：[arXiv:2407.16291](https://arxiv.org/abs/2407.16291) | 针对遮挡问题改进点跟踪注意力设计，提升复杂场景下的轨迹稳定性 |
+| 24 | <img src="https://arxiv.org/html/2411.18671v1/arch.png" width="220" alt="TAPTR v3 缩略图"> | **TAPTRv3**<br>仓库：[TAPTR v3](https://github.com/IDEA-Research/TAPTR)<br>会议：ICLR 2026 · 论文：[arXiv:2411.18671](https://arxiv.org/abs/2411.18671) | TAPTR 系列第三代，继续刷新 Track-Anything 类任务的性能上限 |
+| 25 | <img src="https://raw.githubusercontent.com/IDEA-Research/Grounded-Segment-Anything/HEAD/assets/grounded_sam_new_demo_image.png" width="220" alt="Grounded-SAM 缩略图"> | **Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks**<br>仓库：[Grounded-SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything)<br>会议：— · 论文：[arXiv:2401.14159](https://arxiv.org/abs/2401.14159) | Grounding DINO + SAM + Stable Diffusion + Recognize Anything 组合管线，文本→检测→分割→生成全链路，17.7k★ 为组织内最高 |
+| 26 | <img src="https://raw.githubusercontent.com/IDEA-Research/OSX/HEAD/assets/grounded_sam_osx_output1.jpg" width="220" alt="OSX 缩略图"> | **One-Stage 3D Whole-Body Mesh Recovery with Component Aware Transformer**<br>仓库：[OSX](https://github.com/IDEA-Research/OSX)<br>会议：CVPR 2023 · 论文：[arXiv:2303.16160](https://arxiv.org/abs/2303.16160) | 单阶段 3D 全身网格恢复，组件感知 Transformer 分别建模手/脸/身体，并发布 UBODY 数据集 |
+| 27 | <img src="https://raw.githubusercontent.com/IDEA-Research/DWPose/HEAD/resources/architecture.jpg" width="220" alt="DWPose 缩略图"> | **Effective Whole-body Pose Estimation with Two-stages Distillation**<br>仓库：[DWPose](https://github.com/IDEA-Research/DWPose)<br>会议：ICCV 2023 · 论文：[arXiv:2307.15880](https://arxiv.org/abs/2307.15880) | 两阶段蒸馏的轻量全身姿态估计，被 ControlNet / SD WebUI 生态广泛用于姿态驱动生成 |
+| 28 | <img src="https://raw.githubusercontent.com/IDEA-Research/X-Pose/HEAD/asset/framework.png" width="220" alt="X-Pose 缩略图"> | **X-Pose: Detecting Any Keypoints**<br>仓库：[X-Pose](https://github.com/IDEA-Research/X-Pose)<br>会议：ECCV 2024 · 论文：[arXiv:2310.08530](https://arxiv.org/abs/2310.08530) | 首个开集关键点检测框架：文本/视觉/关键点示例多模态提示，配套 UniKPT 数据集（338 类关键点） |
+| 29 | <img src="https://raw.githubusercontent.com/IDEA-Research/Click-Pose/HEAD/assets/framework_clickpose.jpg" width="220" alt="Click-Pose 缩略图"> | **Neural Interactive Keypoint Detection**<br>仓库：[Click-Pose](https://github.com/IDEA-Research/Click-Pose)<br>会议：ICCV 2023 · 论文：[arXiv:2308.10174](https://arxiv.org/abs/2308.10174) | 交互式关键点检测：用户点击即可精调结果（human-in-the-loop），降低标注成本 |
+| 30 | <img src="https://raw.githubusercontent.com/IDEA-Research/HumanArt/HEAD/resources/dataset_overview.png" width="220" alt="HumanArt 缩略图"> | **Human-Art: A Versatile Human-Centric Dataset**<br>仓库：[HumanArt](https://github.com/IDEA-Research/HumanArt)<br>会议：CVPR 2023 · 论文：[arXiv:2303.02760](https://arxiv.org/abs/2303.02760) | 覆盖自然场景与卡通/雕塑/画作等人工场景的人类中心数据集与基准，提升跨域泛化 |
+| 31 | <img src="https://raw.githubusercontent.com/IDEA-Research/HumanSD/HEAD/assets/teaser.png" width="220" alt="HumanSD 缩略图"> | **HumanSD: A Native Skeleton-Guided Diffusion Model for Human Image Generation**<br>仓库：[HumanSD](https://github.com/IDEA-Research/HumanSD)<br>会议：ICCV 2023 · 论文：[arXiv:2304.04269](https://arxiv.org/abs/2304.04269) | 原生骨架引导扩散模型，实现姿势与构图精确可控的人体图像生成 |
+| 32 | <img src="https://arxiv.org/html/2412.01537v1/arch.png" width="220" alt="HandOS 缩略图"> | **HandOS: 3D Hand Reconstruction in One Stage**<br>仓库：[HandOS](https://github.com/IDEA-Research/HandOSweb)<br>会议：— · 论文：[arXiv:2412.01537](https://arxiv.org/abs/2412.01537) | 单阶段 3D 手部重建：端到端集成检测、2D/3D 姿态与网格回归，FreiHand 上 5.0 PA-MPJPE 达 SOTA |
+| 33 | <img src="https://arxiv.org/html/2305.12252v1/f1.png" width="220" alt="DiffHOI 缩略图"> | **Boosting Human-Object Interaction Detection with Text-to-Image Diffusion Model**<br>仓库：[DiffHOI](https://github.com/IDEA-Research/DiffHOI)<br>会议：— · 论文：[arXiv:2305.12252](https://arxiv.org/abs/2305.12252) | 用文生图扩散模型合成多样人-物交互数据，以数据增强思路提升 HOI 检测 |
+| 34 | <img src="https://raw.githubusercontent.com/IDEA-Research/DreamWaltz/HEAD/assets/teaser.gif" width="220" alt="DreamWaltz 缩略图"> | **Make a Scene with Complex 3D Animatable Avatars**<br>仓库：[DreamWaltz](https://github.com/IDEA-Research/DreamWaltz)<br>会议：NeurIPS 2023 · 论文：[arXiv:2305.12529](https://arxiv.org/abs/2305.12529) | 文本 + 3D 骨架先验驱动，生成高一致、可动画的复杂 3D 化身 |
+| 35 | <img src="https://toss3d.github.io/figures/teaser.png" width="220" alt="TOSS 缩略图"> | **High-quality text-guided novel view synthesis from a single image**<br>仓库：[TOSS](https://github.com/IDEA-Research/TOSS)<br>会议：ICLR 2024 · 论文：[arXiv:2310.10644](https://arxiv.org/abs/2310.10644) | 单图 → 文本引导多视角新视图合成，提升单图重建的视角一致性 |
+| 36 | <img src="https://raw.githubusercontent.com/IDEA-Research/SceneMaker/HEAD/assets/imgs/pipeline.png" width="220" alt="SceneMaker 缩略图"> | **Open-set 3D Scene Generation with Decoupled De-occlusion and Pose Estimation**<br>仓库：[SceneMaker](https://github.com/IDEA-Research/SceneMaker)<br>会议：CVPR 2026 · 论文：[arXiv:2512.10957](https://arxiv.org/abs/2512.10957) | 开放集 3D 场景生成：解耦「去遮挡」与「姿态估计」两个模型，单图生成完整场景 |
+| 37 | <img src="https://raw.githubusercontent.com/IDEA-Research/SegVGGT/HEAD/assets/overview.png" width="220" alt="SegVGGT 缩略图"> | **Joint 3D Reconstruction and Instance Segmentation from Multi-View Images**<br>仓库：[SegVGGT](https://github.com/IDEA-Research/SegVGGT)<br>会议：ECCV 2026 · 论文：[arXiv:2603.19926](https://arxiv.org/abs/2603.19926) | 多视图图像联合 3D 重建与实例分割，空间智能基础能力 |
+| 38 | <img src="https://raw.githubusercontent.com/IDEA-Research/SegDINO3D/HEAD/assets/overview.png" width="220" alt="SegDINO3D 缩略图"> | **SegDINO3D: 3D Instance Segmentation Empowered by Image-Level and Object-Level 2D Features**<br>仓库：[SegDINO3D](https://github.com/IDEA-Research/SegDINO3D)<br>会议：AAAI 2026 · 论文：[见仓库](https://github.com/IDEA-Research/SegDINO3D) | 融合图像级与物体级 2D 特征的 3D 实例分割，用 DINO-X 提供 2D 特征；ScanNet(val) mAP 64.0 |
+| 39 | <img src="https://raw.githubusercontent.com/IDEA-Research/V-Reflection/HEAD/images/Framework.png" width="220" alt="V-Reflection 缩略图"> | **Transforming MLLMs from Passive Observers to Active Interrogators**<br>仓库：[V-Reflection](https://github.com/IDEA-Research/V-Reflection)<br>会议：— · 论文：[arXiv:2604.03307](https://arxiv.org/abs/2604.03307) | think-then-look 视觉反思机制：让 MLLM 从被动观察转为主动质询，缓解细粒度感知幻觉 |
+| 40 | <img src="https://raw.githubusercontent.com/IDEA-Research/Motion-X/HEAD/assets/mesh_recovery_exp.png" width="220" alt="Motion-X 缩略图"> | **A Large-scale 3D Expressive Whole-body Human Motion Dataset**<br>仓库：[Motion-X](https://github.com/IDEA-Research/Motion-X)<br>会议：NeurIPS 2023 · 论文：[项目页](https://motion-x-dataset.github.io/) | 大规模 3D 表达性全身运动数据集：15.6M SMPL-X 姿态标注、81.1K 运动序列，配自动标注管线 |
+| 41 | <img src="https://raw.githubusercontent.com/IDEA-Research/HumanTOMATO/HEAD/assets/highlight.png" width="220" alt="HumanTOMATO 缩略图"> | **Text-aligned Whole-body Motion Generation**<br>仓库：[HumanTOMATO](https://github.com/IDEA-Research/HumanTOMATO)<br>会议：ICML 2024 · 论文：[arXiv:2310.12978](https://arxiv.org/abs/2310.12978) | Holistic Hierarchical VQ-VAE + Hierarchical-GPT + 文本-运动对齐，实现含手指与表情的全身运动生成 |
+| 42 | <img src="https://raw.githubusercontent.com/IDEA-Research/MotionLLM/HEAD/assets/application.png" width="220" alt="MotionLLM 缩略图"> | **MotionLLM: Understanding Human Behaviors from Human Motions and Videos**<br>仓库：[MotionLLM](https://github.com/IDEA-Research/MotionLLM)<br>会议：— · 论文：[arXiv:2405.20340](https://arxiv.org/abs/2405.20340) | 让 LLM 理解人类运动与视频行为，统一动作理解与生成接口 |
+| 43 | <img src="https://arxiv.org/html/2410.18977v1/teaser.png" width="220" alt="MotionCLR 缩略图"> | **Motion Generation and Training-free Editing via Understanding Attention Mechanisms**<br>仓库：[MotionCLR](https://github.com/IDEA-Research/MotionCLR)<br>会议：— · 论文：[arXiv:2410.18977](https://arxiv.org/abs/2410.18977) | 通过理解注意力机制实现运动生成与免训练编辑，无需重训即可修改已生成运动 |
+| 44 | <img src="https://raw.githubusercontent.com/IDEA-Research/Grounded-SAM-2/HEAD/assets/grounded_sam_2_intro.jpg" width="220" alt="Grounded-SAM-2 缩略图"> | **Ground and Track Anything in Videos（应用仓库）**<br>仓库：[Grounded-SAM-2](https://github.com/IDEA-Research/Grounded-SAM-2)<br>会议：— · 论文：[arXiv:2401.14159](https://arxiv.org/abs/2401.14159) | Grounding DINO + Florence-2 + SAM 2：把 Grounding 扩展到视频，文本指定目标后持续分割与跟踪 |
+| 45 | <img src="https://user-images.githubusercontent.com/10917115/240789070-6c8b53c1-8689-41da-a978-a791b6e293ec.png" width="220" alt="deepdataspace 缩略图"> | **CV 数据可视化 / 标注 / 模型分析工具（非论文）**<br>仓库：[deepdataspace](https://github.com/IDEA-Research/deepdataspace)<br>类型：工具平台（非论文） · [官网](https://deepdataspace.com) | 一站式 CV 数据平台：协同标注、智能标注与模型分析，支撑产业数据闭环 |
+| 46 | <img src="https://raw.githubusercontent.com/IDEA-Research/hana/HEAD/assets/hana.png" width="220" alt="hana 缩略图"> | **Google Imagen 的 PyTorch 复现与权重（非论文）**<br>仓库：[hana](https://github.com/IDEA-Research/hana)<br>类型：非论文 · 工程复现 | 文生图模型工程复现与权重开放 |
+| 47 | <img src="https://opengraph.githubassets.com/1/IDEA-Research/IYFC" width="220" alt="IYFC 缩略图"> | **IDEA 内部 GPU 基础设施（非论文）**<br>仓库：[IYFC](https://github.com/IDEA-Research/IYFC)<br>类型：非论文 · 内部基础设施 | seal-gpu 相关 C++ 内部基础设施组件 |
+| 48 | <img src="https://opengraph.githubassets.com/1/IDEA-Research/LipsFormer" width="220" alt="LipsFormer 缩略图"> | **Introducing Lipschitz Continuity to Vision Transformers**<br>仓库：[LipsFormer](https://github.com/IDEA-Research/LipsFormer)<br>会议：— · 论文：[OpenReview](https://openreview.net/pdf?id=cHf1DcCwcH3) | 将 Lipschitz 连续性引入 ViT（Swin / CSwin），提升训练稳定性与鲁棒性 |
+| 49 | <img src="https://opengraph.githubassets.com/1/IDEA-Research/awesome-detection-transformer" width="220" alt="detrex-storage / awesome-detection-transformer 缩略图"> | **权重存储仓库 / Detection Transformer 论文导航列表（非论文）**<br>仓库：[detrex-storage / awesome-detection-transformer](https://github.com/IDEA-Research/detrex-storage)<br>类型：非论文 · 权重托管 + 论文导航 | detrex 配套权重托管 + 社区论文导航（1.4k★） |
 
 ---
 
@@ -1576,4 +1664,5 @@ IDEA-Research 的发展路径对 AI 研究机构和创业公司有以下启示�
 
 ---
 *（本报告为终版完整版，覆盖：组织团队全貌、七大主线深度拆解、核心论文技术剖析、全量论文清单（含仓库外）、仓库工程细节、49 项论文速查表、时间线与影响力评估。）*
+*（内容由AI生成，仅供参考）*
 *（内容由AI生成，仅供参考）*
